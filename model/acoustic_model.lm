@@ -1,0 +1,350 @@
+#############################################################################
+## Copyright (c) 1996, Carnegie Mellon University, Cambridge University,
+## Ronald Rosenfeld and Philip Clarkson
+#############################################################################
+=============================================================================
+===============  This file was produced by the CMU-Cambridge  ===============
+===============     Statistical Language Modeling Toolkit     ===============
+=============================================================================
+This is a 3-gram language model, based on a vocabulary of 28 words,
+  which begins "</s>", "<s>", "antivirus"...
+This is an OPEN-vocabulary model (type 1)
+  (OOVs were mapped to UNK, which is treated as any other vocabulary word)
+Good-Turing discounting was applied.
+1-gram frequency of frequency : 0
+2-gram frequency of frequency : 0 0 2 4 36 4 2
+3-gram frequency of frequency : 0 0 4 9 86 9 4
+1-gram discounting ratios :
+2-gram discounting ratios :
+3-gram discounting ratios :
+This file is in the ARPA-standard format introduced by Doug Paul.
+
+p(wd3|wd1,wd2)= if(trigram exists)           p_3(wd1,wd2,wd3)
+                else if(bigram w1,w2 exists) bo_wt_2(w1,w2)*p(wd3|wd2)
+                else                         p(wd3|w2)
+
+p(wd2|wd1)= if(bigram exists) p_2(wd1,wd2)
+            else              bo_wt_1(wd1)*p_1(wd2)
+
+All probs and back-off weights (bo_wt) are given in log10 form.
+
+Data formats:
+
+Beginning of data mark: \data\
+ngram 1=nr            # number of 1-grams
+ngram 2=nr            # number of 2-grams
+ngram 3=nr            # number of 3-grams
+
+\1-grams:
+p_1     wd_1 bo_wt_1
+\2-grams:
+p_2     wd_1 wd_2 bo_wt_2
+\3-grams:
+p_3     wd_1 wd_2 wd_3
+
+end of data mark: \end\
+
+\data\
+ngram 1=29
+ngram 2=96
+ngram 3=167
+
+\1-grams:
+-99.0000 <UNK>	0.0000
+-0.6908 </s>	-2.5039
+-0.6898 <s>	-2.5082
+-1.9301 antivirus	-1.2990
+-2.0614 antivirusul	-1.1798
+-1.9908 calculator	-1.2435
+-1.9908 calculatorul	-1.2435
+-1.6898 comandă	-1.5243
+-1.6898 control	-1.5243
+-1.0877 de	-2.1805
+-1.2918 deschide	-1.9689
+-1.6898 editor	-1.5869
+-1.6898 editorul	-1.5869
+-1.6898 fișiere	-1.5243
+-1.7007 grafic	-1.5138
+-1.8939 internet	-1.3324
+-2.1157 internetul	-1.1315
+-1.6898 linia	-1.5862
+-1.6898 muzica	-1.5243
+-1.2875 oprește	-1.9726
+-1.9908 panou	-1.3054
+-1.9908 panoul	-1.3054
+-1.2918 pornește	-1.9689
+-1.9908 sistem	-1.3054
+-1.9908 sistemul	-1.3054
+-1.6898 text	-1.5243
+-1.9908 torent	-1.2435
+-1.9908 torentul	-1.2435
+-1.2962 închide	-1.9652
+
+\2-grams:
+-0.0011 </s> <s> 0.0054
+-0.6031 <s> deschide 0.0639
+-0.5989 <s> oprește 0.0633
+-0.6031 <s> pornește 0.0639
+-0.6075 <s> închide 0.0645
+-0.0177 antivirus </s> 1.2229
+-0.0235 antivirusul </s> 1.3479
+-0.0202 calculator </s> 1.2809
+-0.0202 calculatorul </s> 1.2809
+-0.0105 comandă </s> 0.9904
+-0.0105 control </s> 0.9904
+-0.6047 de comandă 0.0105
+-0.6047 de control 0.0105
+-0.6047 de fișiere 0.0105
+-0.6047 de text 0.0105
+-1.2231 deschide antivirus 0.5528
+-1.3692 deschide antivirusul 0.5798
+-1.2900 deschide calculator 0.5643
+-1.2900 deschide calculatorul 0.5643
+-1.0268 deschide editor 0.5921
+-1.0268 deschide editorul 0.5921
+-1.1651 deschide internet 0.5283
+-1.4661 deschide internetul 0.6284
+-1.0268 deschide linia 0.5819
+-1.0268 deschide muzica 0.5819
+-1.2900 deschide panou 0.5643
+-1.2900 deschide panoul 0.5643
+-1.2900 deschide sistem 0.5643
+-1.2900 deschide sistemul 0.5643
+-1.2900 deschide torent 0.5643
+-1.2900 deschide torentul 0.5643
+-0.3112 editor de -1.1982
+-0.3112 editor grafic 0.2906
+-0.3112 editorul de -1.1982
+-0.3112 editorul grafic 0.2906
+-0.0105 fișiere </s> 0.9904
+-0.0107 grafic </s> 1.0011
+-0.0164 internet </s> 1.1882
+-0.0263 internetul </s> 1.3990
+-0.0105 linia de -1.4887
+-0.0105 muzica </s> 0.9904
+-1.2937 oprește antivirus 0.6198
+-1.2937 oprește antivirusul 0.5006
+-1.2937 oprește calculator 0.5643
+-1.2937 oprește calculatorul 0.5643
+-1.0305 oprește editor 0.5921
+-0.9927 oprește editorul 0.5543
+-1.2268 oprește internet 0.5863
+-1.3729 oprește internetul 0.5315
+-1.0305 oprește linia 0.5819
+-1.0305 oprește muzica 0.5819
+-1.2937 oprește panou 0.5643
+-1.2937 oprește panoul 0.5643
+-1.2937 oprește sistem 0.5643
+-1.2937 oprește sistemul 0.5643
+-1.2937 oprește torent 0.5643
+-1.2937 oprește torentul 0.5643
+-0.0202 panou de -1.1982
+-0.0202 panoul de -1.1982
+-1.1651 pornește antivirus 0.4949
+-1.4661 pornește antivirusul 0.6767
+-1.2900 pornește calculator 0.5643
+-1.2900 pornește calculatorul 0.5643
+-1.0268 pornește editor 0.5921
+-1.0268 pornește editorul 0.5921
+-1.2231 pornește internet 0.5863
+-1.3692 pornește internetul 0.5315
+-1.0268 pornește linia 0.5819
+-1.0268 pornește muzica 0.5819
+-1.2900 pornește panou 0.5643
+-1.2900 pornește panoul 0.5643
+-1.2900 pornește sistem 0.5643
+-1.2900 pornește sistemul 0.5643
+-1.2900 pornește torent 0.5643
+-1.2900 pornește torentul 0.5643
+-0.0202 sistem de -1.1982
+-0.0202 sistemul de -1.1982
+-0.0105 text </s> 0.9904
+-0.0202 torent </s> 1.2809
+-0.0202 torentul </s> 1.2809
+-1.2863 închide antivirus 0.6198
+-1.2863 închide antivirusul 0.5006
+-1.2863 închide calculator 0.5643
+-1.2863 închide calculatorul 0.5643
+-1.0231 închide editor 0.5921
+-1.0645 închide editorul 0.6335
+-1.2194 închide internet 0.5863
+-1.3655 închide internetul 0.5315
+-1.0231 închide linia 0.5819
+-1.0231 închide muzica 0.5819
+-1.2863 închide panou 0.5643
+-1.2863 închide panoul 0.5643
+-1.2863 închide sistem 0.5643
+-1.2863 închide sistemul 0.5643
+-1.2863 închide torent 0.5643
+-1.2863 închide torentul 0.5643
+
+\3-grams:
+-0.6064 </s> <s> deschide 
+-0.5977 </s> <s> oprește 
+-0.6021 </s> <s> pornește 
+-0.6064 </s> <s> închide 
+-1.2262 <s> deschide antivirus 
+-1.4023 <s> deschide antivirusul 
+-1.3054 <s> deschide calculator 
+-1.3054 <s> deschide calculatorul 
+-1.0043 <s> deschide editor 
+-1.0043 <s> deschide editorul 
+-1.1592 <s> deschide internet 
+-1.5272 <s> deschide internetul 
+-1.0043 <s> deschide linia 
+-1.0043 <s> deschide muzica 
+-1.3054 <s> deschide panou 
+-1.3054 <s> deschide panoul 
+-1.3054 <s> deschide sistem 
+-1.3054 <s> deschide sistemul 
+-1.3054 <s> deschide torent 
+-1.3054 <s> deschide torentul 
+-1.3096 <s> oprește antivirus 
+-1.3096 <s> oprește antivirusul 
+-1.3096 <s> oprește calculator 
+-1.3096 <s> oprește calculatorul 
+-1.0086 <s> oprește editor 
+-0.9672 <s> oprește editorul 
+-1.2304 <s> oprește internet 
+-1.4065 <s> oprește internetul 
+-1.0086 <s> oprește linia 
+-1.0086 <s> oprește muzica 
+-1.3096 <s> oprește panou 
+-1.3096 <s> oprește panoul 
+-1.3096 <s> oprește sistem 
+-1.3096 <s> oprește sistemul 
+-1.3096 <s> oprește torent 
+-1.3096 <s> oprește torentul 
+-1.1592 <s> pornește antivirus 
+-1.5272 <s> pornește antivirusul 
+-1.3054 <s> pornește calculator 
+-1.3054 <s> pornește calculatorul 
+-1.0043 <s> pornește editor 
+-1.0043 <s> pornește editorul 
+-1.2262 <s> pornește internet 
+-1.4023 <s> pornește internetul 
+-1.0043 <s> pornește linia 
+-1.0043 <s> pornește muzica 
+-1.3054 <s> pornește panou 
+-1.3054 <s> pornește panoul 
+-1.3054 <s> pornește sistem 
+-1.3054 <s> pornește sistemul 
+-1.3054 <s> pornește torent 
+-1.3054 <s> pornește torentul 
+-1.3010 <s> închide antivirus 
+-1.3010 <s> închide antivirusul 
+-1.3010 <s> închide calculator 
+-1.3010 <s> închide calculatorul 
+-1.0000 <s> închide editor 
+-1.0458 <s> închide editorul 
+-1.2218 <s> închide internet 
+-1.3979 <s> închide internetul 
+-1.0000 <s> închide linia 
+-1.0000 <s> închide muzica 
+-1.3010 <s> închide panou 
+-1.3010 <s> închide panoul 
+-1.3010 <s> închide sistem 
+-1.3010 <s> închide sistemul 
+-1.3010 <s> închide torent 
+-1.3010 <s> închide torentul 
+-0.0185 antivirus </s> <s> 
+-0.0248 antivirusul </s> <s> 
+-0.0212 calculator </s> <s> 
+-0.0212 calculatorul </s> <s> 
+-0.0107 comandă </s> <s> 
+-0.0107 control </s> <s> 
+-0.0107 de comandă </s> 
+-0.0107 de control </s> 
+-0.0107 de fișiere </s> 
+-0.0107 de text </s> 
+-0.0669 deschide antivirus </s> 
+-0.0969 deschide antivirusul </s> 
+-0.0792 deschide calculator </s> 
+-0.0792 deschide calculatorul </s> 
+-0.3424 deschide editor de 
+-0.3424 deschide editor grafic 
+-0.3424 deschide editorul de 
+-0.3424 deschide editorul grafic 
+-0.0580 deschide internet </s> 
+-0.1249 deschide internetul </s> 
+-0.0414 deschide linia de 
+-0.0414 deschide muzica </s> 
+-0.0792 deschide panou de 
+-0.0792 deschide panoul de 
+-0.0792 deschide sistem de 
+-0.0792 deschide sistemul de 
+-0.0792 deschide torent </s> 
+-0.0792 deschide torentul </s> 
+-0.0212 editor de text 
+-0.0212 editor grafic </s> 
+-0.0212 editorul de text 
+-0.0212 editorul grafic </s> 
+-0.0107 fișiere </s> <s> 
+-0.0110 grafic </s> <s> 
+-0.0170 internet </s> <s> 
+-0.0280 internetul </s> <s> 
+-0.0107 linia de comandă 
+-0.0107 muzica </s> <s> 
+-0.0792 oprește antivirus </s> 
+-0.0792 oprește antivirusul </s> 
+-0.0792 oprește calculator </s> 
+-0.0792 oprește calculatorul </s> 
+-0.3424 oprește editor de 
+-0.3424 oprește editor grafic 
+-0.3802 oprește editorul de 
+-0.3010 oprește editorul grafic 
+-0.0669 oprește internet </s> 
+-0.0969 oprește internetul </s> 
+-0.0414 oprește linia de 
+-0.0414 oprește muzica </s> 
+-0.0792 oprește panou de 
+-0.0792 oprește panoul de 
+-0.0792 oprește sistem de 
+-0.0792 oprește sistemul de 
+-0.0792 oprește torent </s> 
+-0.0792 oprește torentul </s> 
+-0.0212 panou de control 
+-0.0212 panoul de control 
+-0.0580 pornește antivirus </s> 
+-0.1249 pornește antivirusul </s> 
+-0.0792 pornește calculator </s> 
+-0.0792 pornește calculatorul </s> 
+-0.3424 pornește editor de 
+-0.3424 pornește editor grafic 
+-0.3424 pornește editorul de 
+-0.3424 pornește editorul grafic 
+-0.0669 pornește internet </s> 
+-0.0969 pornește internetul </s> 
+-0.0414 pornește linia de 
+-0.0414 pornește muzica </s> 
+-0.0792 pornește panou de 
+-0.0792 pornește panoul de 
+-0.0792 pornește sistem de 
+-0.0792 pornește sistemul de 
+-0.0792 pornește torent </s> 
+-0.0792 pornește torentul </s> 
+-0.0212 sistem de fișiere 
+-0.0212 sistemul de fișiere 
+-0.0107 text </s> <s> 
+-0.0212 torent </s> <s> 
+-0.0212 torentul </s> <s> 
+-0.0792 închide antivirus </s> 
+-0.0792 închide antivirusul </s> 
+-0.0792 închide calculator </s> 
+-0.0792 închide calculatorul </s> 
+-0.3424 închide editor de 
+-0.3424 închide editor grafic 
+-0.3010 închide editorul de 
+-0.3979 închide editorul grafic 
+-0.0669 închide internet </s> 
+-0.0969 închide internetul </s> 
+-0.0414 închide linia de 
+-0.0414 închide muzica </s> 
+-0.0792 închide panou de 
+-0.0792 închide panoul de 
+-0.0792 închide sistem de 
+-0.0792 închide sistemul de 
+-0.0792 închide torent </s> 
+-0.0792 închide torentul </s> 
+
+\end\
