@@ -49,9 +49,15 @@ while True:
             if not in_speech_bf:
                 decoder.end_utt()
                 hypothesis = decoder.hyp().hypstr
-                print 'Result:', hypothesis
-                run_mapped_script_if_exists(hypothesis)
-                decoder.start_utt()
+                if hypothesis == 'stop':
+                    sys.exit(0)
+                elif hypothesis == 'pauză':
+                    if hypothesis == 'start':
+                        print 'Result:', hypothesis
+                        run_mapped_script_if_exists(hypothesis)
+                        decoder.start_utt()
+                    else:
+                        continue
     else:
         break
 decoder.end_utt()

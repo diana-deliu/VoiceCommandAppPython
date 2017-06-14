@@ -1,0 +1,1 @@
+start C:\Users\Diahne\Downloads\"Povesti audio"\"Capra cu trei iezi.mp3"
