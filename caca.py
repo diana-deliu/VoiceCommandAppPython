@@ -1,5 +1,5 @@
 import subprocess
-bat_file_path = 'scripts/inchide_muzica.bat'
+bat_file_path = 'scripts/deschide_editor_grafic.bat'
 
-p = subprocess.Popen('start cmd /c scripts\inchide_muzica.bat', shell=True)
+p = subprocess.Popen('start cmd /c scripts\deschide_editor_grafic.bat', shell=True)
 p.wait()

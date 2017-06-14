@@ -1,1 +1,1 @@
-start C:\Windows\System32\calc.exe
+start calc

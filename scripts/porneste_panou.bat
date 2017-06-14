@@ -1,1 +1,1 @@
-control main.cpl
+control

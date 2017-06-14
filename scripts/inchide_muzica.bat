@@ -1,1 +1,1 @@
-taskkill /f /im AIMP.exe
+taskkill /f /im wmplayer.exe

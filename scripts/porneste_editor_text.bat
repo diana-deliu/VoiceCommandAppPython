@@ -1,1 +1,1 @@
-start C:\Users\Diahne\Desktop\ro_acoustic_model_train.transcription
+start notepad

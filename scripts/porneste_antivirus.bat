@@ -1,1 +1,0 @@
-start "C:\Program Files\Bitdefender\Antivirus Free Edition\gziface.exe"

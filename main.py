@@ -31,14 +31,13 @@ config.set_string('-hmm', path.join(MODELDIR, 'acoustic_model'))
 config.set_string('-lm', path.join(MODELDIR, 'acoustic_model.lm'))
 config.set_string('-dict', path.join(MODELDIR, 'acoustic_model.dic'))
 decoder = Decoder(config)
-# config.set_string('-keyphrase', 'forward')
-# config.set_float('-kws_threshold', 1e+20)
 
 p = pyaudio.PyAudio()
 stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=1024)
 stream.start_stream()
 
 in_speech_bf = False
+paused = False
 decoder.start_utt()
 while True:
     buf = stream.read(1024)
@@ -49,15 +48,21 @@ while True:
             if not in_speech_bf:
                 decoder.end_utt()
                 hypothesis = decoder.hyp().hypstr
-                if hypothesis == 'stop':
+                print 'Hypothesis:', hypothesis
+                if 'stop' == hypothesis:
+                    print 'Will stop execution of program'
                     sys.exit(0)
-                elif hypothesis == 'pauză':
-                    if hypothesis == 'start':
-                        print 'Result:', hypothesis
-                        run_mapped_script_if_exists(hypothesis)
-                        decoder.start_utt()
+                elif 'pauză' == hypothesis:
+                    paused = True
+                    print 'Paused: say \'START\' to resume running commands'
+                else:
+                    if paused:
+                        if 'start' in hypothesis:
+                            paused = False
+                            print 'Resumed running commands'
                     else:
-                        continue
+                        run_mapped_script_if_exists(hypothesis)
+                decoder.start_utt()
     else:
         break
 decoder.end_utt()
